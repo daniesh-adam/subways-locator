@@ -10,7 +10,7 @@ const lat = 3.128099;
 const lng = 101.678678;
 const map = L.map("map", config).setView([lat, lng], zoom);
 
-let catchment_radius = 5000; // 5km
+let catchment_radius = 500;
 let circles = [];
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
