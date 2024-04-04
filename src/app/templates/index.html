@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Main
+{% endblock title %}
+
+{% block main %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <form method="post">
+                    <div class="mb-3">
+                        <label for="user-prompt-input" class="form-label">Your Prompt:</label>
+                        <input type="text" class="form-control" id="user-prompt-input" name="user-prompt" placeholder="Type your question..." required>
+                        <button class="btn btn-primary mt-3" id="user-prompt-btn" type="submit" onclick="getResponse()">Get Response</button>
+                    </div>
+                </form>
+                <div class="container text-muted" id="user-prompt">{{ user_prompt }}</div>
+                <div class="container">
+                    <span id="prompt-response">{{ prompt_response }}</span>
+                    <div class="spinner-grow spinner-grow-sm d-none" id="prompt-response-spinner" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5 mb-10" id="map" style="width: 70%; height: 60%;"></div>
+{% endblock main %}
+
+{% block script %}
+    <script>{% include "js/prompt.js" %}</script>
+    <script>{% include "js/map.js" %}</script>
+{% endblock script %}
