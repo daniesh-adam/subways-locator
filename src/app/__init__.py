@@ -11,7 +11,7 @@ def get_root_dir_abs_path() -> str:
     return getattr(sys, "_MEIPASS", os.path.abspath(os.path.dirname(__file__)))
 
 
-def create_app(config_object_name) -> Flask:
+def create_app() -> Flask:
     """
     Initialise Flask app.
 
@@ -31,8 +31,14 @@ def create_app(config_object_name) -> Flask:
                 )
 
     # if not config_object_name is None:
-    app.config.from_object(config_object_name)
+    # app.config.from_object("config.ProductionConfig")
+    app.config['DEBUG'] = False
+    app.config['FIREWORKS_API_KEY'] = 'SqBWv34DVdUJFGpIWO6IXvgDzCpeHvjMXcsRm6IIJScUGOHx'
+    app.config['DB_PATH'] = 'app/data/outlets.db'
 
     with app.app_context():
         from app import views
         return app
+
+
+application = create_app()
